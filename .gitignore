@@ -1,5 +1,6 @@
 .idea/
 bfg.jar
+Credentials.json
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
