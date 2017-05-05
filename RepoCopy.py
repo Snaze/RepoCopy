@@ -88,7 +88,7 @@ if __name__ == "__main__":
     if destination == "":
         destination = "https://api.github.com/"
 
-    print ("    RepoMover    ")
+    print ("    RepoCopy    ")
     print ("-----------------------------------")
     print ("Preparing to move all repositories from {0} to {1}".format(source_url, destination))
     print ("Source User = {0}, Destination User = {1}".format(source_login, dest_login))
@@ -141,4 +141,4 @@ if __name__ == "__main__":
         if not ret_val:
             break
 
-    print ("RepoMover Complete")
+    print ("RepoCopy Complete")
