@@ -1,5 +1,5 @@
 # RepoCopy
-This is a quick and dirty utility to copy multiple remote repositories from GitHub Enterprise to Github, or from GitHub to GitHub Enterprise.  It will copy all history and all branches.  
+This is a quick and dirty utility to copy multiple remote repositories from GitHub Enterprise to Github, from GitHub to GitHub Enterprise, or Github Enterprise to Github Enterprise.  It will copy all history and all branches.  
 
 ## References
 
