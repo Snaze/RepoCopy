@@ -6,15 +6,18 @@ import shutil
 
 current_dir = os.getcwd()
 
+
 def get_connection_info():
     with open("Credentials.json", "r") as the_file:
         to_ret = json.load(the_file)
 
     return to_ret
 
+
 def print_output(to_output, verbose=False):
     if verbose:
         print (to_output)
+
 
 def copy_repository(dest_gh, name, repo, verbose=False):
 
@@ -100,8 +103,19 @@ if __name__ == "__main__":
     else:
         dest_gh = login(username=dest_login, password=dest_password, url=dest_url)
 
-    print ("Source User = {0}".format(source_gh.user()))
-    print ("Dest User = {0}".format(dest_gh.user()))
+    source_user = source_gh.user()
+    dest_user = dest_gh.user()
+
+    print ("Source User = {0}".format(source_user))
+    print ("Dest User = {0}".format(dest_user))
+
+    if source_user is None:
+        print ("Connection failed to source")
+        exit(1)
+
+    if dest_user is None:
+        print ("Connection failed to destination")
+        exit(1)
 
     source_repo_dict = dict()
     dest_repo_dict = dict()
@@ -121,11 +135,6 @@ if __name__ == "__main__":
     to_copy_repo_dict = {key:source_repo_dict[key] for key in source_repo_dict if key not in dest_repo_dict}
 
     print ("{0} Repositories will be copied (which do not exist at the destination)".format(len(to_copy_repo_dict)))
-
-    # temp = dict()
-    # repo_name = "CS6601-Assignment2"
-    # temp[repo_name] = to_copy_repo_dict[repo_name]
-    # copy_repository(dest_gh, repo_name, temp[repo_name], verbose=True)
 
     for repo_name in to_copy_repo_dict:
         ret_val = copy_repository(dest_gh, repo_name, to_copy_repo_dict[repo_name], verbose=True)
